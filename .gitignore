@@ -1,0 +1,45 @@
+# Credentials & secrets
+ssh.md
+.env
+.env.*
+*.pem
+*.key
+*_rsa
+*_ecdsa
+
+# Distributor catalog data
+*.csv
+
+# Operational / internal files — not part of the public codebase
+DEPLOY-*.sh
+UPLOAD-*.sh
+SSH-*.sh
+*.batch
+.sftp-batch
+*.tpl
+*.txt
+archive/
+archive-storefront-child-upload/
+redesign-package/
+scripts/
+docs/
+logos/
+*.md
+!README.md
+
+# Internal AI tool config
+.claude/
+.cursor/
+.learnings/
+
+# OS & editor noise
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# Node / build artifacts
+node_modules/
+dist/
+.cache/

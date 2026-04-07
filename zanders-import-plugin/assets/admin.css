@@ -1,0 +1,57 @@
+/* Zanders Import Admin Styles */
+
+.zanders-import-container {
+    max-width: 1200px;
+}
+
+.zanders-import-container .postbox {
+    margin-bottom: 20px;
+}
+
+.zanders-import-container .form-table th {
+    width: 200px;
+}
+
+#progress-bar-container {
+    background: #f0f0f0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+
+#progress-bar {
+    transition: width 0.3s ease;
+}
+
+#error-log {
+    background: #fff;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+#error-log ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+#error-log li {
+    color: #d63638;
+    margin-bottom: 5px;
+}
+
+#preview-content table {
+    margin-top: 15px;
+}
+
+#preview-content th,
+#preview-content td {
+    padding: 8px;
+    text-align: left;
+}
+
+#ftp-test-result {
+    margin-left: 10px;
+    font-weight: 600;
+}

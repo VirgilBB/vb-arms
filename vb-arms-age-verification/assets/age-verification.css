@@ -1,0 +1,215 @@
+/* VB Arms Age Verification Modal Styles */
+
+/* Prevent body scroll when modal is open */
+body.vb-arms-age-modal-open {
+    overflow: hidden;
+}
+
+/* Modal Overlay */
+.vb-arms-age-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(10, 10, 10, 0.7);
+    z-index: 999998;
+    backdrop-filter: blur(1px);
+}
+
+/* Modal Container */
+.vb-arms-age-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+/* Modal Content */
+.vb-arms-age-modal-content {
+    background: rgba(10, 10, 10, 0.95);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    max-width: 600px;
+    width: 100%;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+    position: relative;
+    z-index: 999999;
+    animation: fadeInUp 0.4s ease-out;
+    backdrop-filter: blur(10px);
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Modal Header */
+.vb-arms-age-modal-header {
+    padding: 2rem 2rem 1rem;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.vb-arms-age-logo {
+    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.vb-arms-age-logo img {
+    max-width: 200px;
+    height: auto;
+    display: block;
+}
+
+.vb-arms-age-modal-header h2 {
+    color: #ffffff;
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+/* Modal Body */
+.vb-arms-age-modal-body {
+    padding: 2rem;
+    text-align: center;
+}
+
+.vb-arms-age-disclaimer {
+    color: #b0b0b0;
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+}
+
+.vb-arms-age-question {
+    color: #ffffff;
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0;
+    line-height: 1.6;
+}
+
+/* Modal Footer */
+.vb-arms-age-modal-footer {
+    padding: 1.5rem 2rem 2rem;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Buttons */
+.vb-arms-age-btn {
+    padding: 0.25rem 1.25rem !important;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    min-width: 90px;
+    height: 28px !important;
+    line-height: 1.2;
+    box-sizing: border-box;
+}
+
+.vb-arms-age-btn-primary {
+    background: #ffffff;
+    color: #0a0a0a;
+}
+
+.vb-arms-age-btn-primary:hover {
+    background: #e0e0e0;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
+}
+
+.vb-arms-age-btn-primary:active {
+    transform: translateY(0);
+}
+
+.vb-arms-age-btn-secondary {
+    background: transparent;
+    color: #ffffff;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.vb-arms-age-btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: translateY(-2px);
+}
+
+.vb-arms-age-btn-secondary:active {
+    transform: translateY(0);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .vb-arms-age-modal {
+        padding: 1rem;
+    }
+    
+    .vb-arms-age-modal-content {
+        max-width: 100%;
+    }
+    
+    .vb-arms-age-modal-header {
+        padding: 1.5rem 1.5rem 1rem;
+    }
+    
+    .vb-arms-age-modal-header h2 {
+        font-size: 1.5rem;
+    }
+    
+    .vb-arms-age-modal-body {
+        padding: 1.5rem;
+    }
+    
+    .vb-arms-age-question {
+        font-size: 1.1rem;
+    }
+    
+    .vb-arms-age-disclaimer {
+        font-size: 0.9rem;
+    }
+    
+    .vb-arms-age-modal-footer {
+        padding: 1rem 1.5rem 1.5rem;
+        flex-direction: column;
+    }
+    
+    .vb-arms-age-btn {
+        width: 100%;
+        min-width: auto;
+    }
+    
+}
+
+/* Prevent interaction with page content */
+.vb-arms-age-modal-open * {
+    pointer-events: none;
+}
+
+.vb-arms-age-modal-content * {
+    pointer-events: auto;
+}
