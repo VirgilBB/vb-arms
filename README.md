@@ -1,6 +1,6 @@
-# VB Arms — AI-Orchestrated Firearms E-Commerce
+# VB ARMS
 
-A WooCommerce-based storefront built with custom WordPress plugins that automate multi-distributor API routing, order fulfillment, and real-time inventory sync for a licensed firearms retailer.
+Custom WooCommerce storefront with plugins for multi-distributor API routing, automated order fulfillment, and real-time inventory sync for a licensed firearms retailer.
 
 ## What This Is
 
