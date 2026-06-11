@@ -3,7 +3,7 @@
  * Plugin Name: VB Arms Age Verification
  * Plugin URI: https://vb-arms.com
  * Description: Mandatory 18+ age verification disclaimer for VB Arms website
- * Version: 1.0.0
+ * Version: 1.1.0
  * Author: VB Arms
  * Author URI: https://vb-arms.com
  * Requires at least: 5.0
@@ -15,7 +15,7 @@ if (!defined('ABSPATH')) {
 }
 
 // Define plugin constants
-define('VB_ARMS_AGE_VERIFY_VERSION', '1.0.0');
+define('VB_ARMS_AGE_VERIFY_VERSION', '1.1.0');
 define('VB_ARMS_AGE_VERIFY_PLUGIN_DIR', plugin_dir_path(__FILE__));
 define('VB_ARMS_AGE_VERIFY_PLUGIN_URL', plugin_dir_url(__FILE__));
 
@@ -346,8 +346,11 @@ class VB_Arms_Age_Verification {
      * Handle age verification AJAX request
      */
     public function handle_age_verification() {
-        check_ajax_referer('vb_arms_age_verify_nonce', 'nonce');
-        
+        // Tolerant nonce check: pages are cached (EasyWP), so the embedded nonce
+        // can outlive its 24h window. This action only sets a cookie on the
+        // requester's own browser, so a stale nonce must not block it.
+        check_ajax_referer('vb_arms_age_verify_nonce', 'nonce', false);
+
         $action = isset($_POST['action_type']) ? sanitize_text_field($_POST['action_type']) : '';
         
         if ($action === 'confirm') {

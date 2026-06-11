@@ -1,6 +1,7 @@
 <?php
 /**
  * Lipsey's API proxy – run this on your server whose IP is whitelisted by Lipsey's.
+ * Whitelisted IP rotates with ISP — current value lives in ssh.md (local only).
  *
  * WordPress (EasyWP) sends requests here; this script forwards them to api.lipseys.com.
  * Lipsey's sees your server's IP, so whitelist that IP with Lipsey's.

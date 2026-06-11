@@ -48,63 +48,29 @@
             }
         });
         
-        // Confirm age button — with timeout, retry, and "still verifying" feedback
+        // Confirm age button — verification is client-side: set the cookie and
+        // dismiss immediately. Pages are cached, so the embedded nonce can be
+        // stale and admin-ajax can fail; the gate must never depend on it.
         confirmBtn.on('click', function(e) {
             e.preventDefault();
 
-            var isRetry = false;
+            var days = (vbArmsAgeVerify.cookie_duration_days !== undefined) ? vbArmsAgeVerify.cookie_duration_days : 1;
+            setCookie(vbArmsAgeVerify.cookie_name, 'yes', days);
+            modal.fadeOut(300, function() {
+                $('body').removeClass('vb-arms-age-modal-open');
+            });
 
-            function doVerify() {
-                confirmBtn.prop('disabled', true).text('Verifying...');
-
-                var stillVerifyingTimer = setTimeout(function() {
-                    confirmBtn.text('Still verifying…');
-                }, 2000);
-
-                $.ajax({
-                    url: vbArmsAgeVerify.ajax_url,
-                    type: 'POST',
-                    data: {
-                        action: 'vb_arms_verify_age',
-                        nonce: vbArmsAgeVerify.nonce,
-                        action_type: 'confirm'
-                    },
-                    timeout: 5000,
-                    success: function(response) {
-                        clearTimeout(stillVerifyingTimer);
-                        if (response.success) {
-                            var days = (vbArmsAgeVerify.cookie_duration_days !== undefined) ? vbArmsAgeVerify.cookie_duration_days : 1;
-                            setCookie(vbArmsAgeVerify.cookie_name, 'yes', days);
-                            modal.fadeOut(300, function() {
-                                $('body').removeClass('vb-arms-age-modal-open');
-                            });
-                        } else {
-                            if (!isRetry) {
-                                isRetry = true;
-                                confirmBtn.text('Retrying…');
-                                setTimeout(doVerify, 1500);
-                            } else {
-                                alert('Error verifying age. Please try again.');
-                                confirmBtn.prop('disabled', false).text('Yes');
-                            }
-                        }
-                    },
-                    error: function(xhr, status) {
-                        clearTimeout(stillVerifyingTimer);
-                        if (!isRetry) {
-                            isRetry = true;
-                            confirmBtn.text('Retrying…');
-                            setTimeout(doVerify, 1500);
-                        } else {
-                            var msg = (status === 'timeout') ? 'Verification is taking longer than usual. Please try again.' : 'Error verifying age. Please try again.';
-                            alert(msg);
-                            confirmBtn.prop('disabled', false).text('Yes');
-                        }
-                    }
-                });
-            }
-
-            doVerify();
+            // Best-effort server notification (sets the cookie server-side too).
+            $.ajax({
+                url: vbArmsAgeVerify.ajax_url,
+                type: 'POST',
+                data: {
+                    action: 'vb_arms_verify_age',
+                    nonce: vbArmsAgeVerify.nonce,
+                    action_type: 'confirm'
+                },
+                timeout: 5000
+            });
         });
         
         // Exit site button

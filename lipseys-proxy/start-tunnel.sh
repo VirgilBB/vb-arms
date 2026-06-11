@@ -1,5 +1,6 @@
 #!/bin/bash
-# Run this on your Mac (Terminal, not Cursor) so Lipsey's sees IP YOUR_WHITELISTED_IP.
+# Run this on your Mac (Terminal, not Cursor) so Lipsey's sees your whitelisted IP.
+# NOTE: Old whitelisted IP was YOUR_WHITELISTED_IP. New Spectrum IP: YOUR_WHITELISTED_IP — contact Lipsey's to re-whitelist.
 # Usage: ./start-tunnel.sh   (or: bash start-tunnel.sh)
 
 set -e
